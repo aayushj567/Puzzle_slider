@@ -1,0 +1,41 @@
+Overview:
+This project was pretty long and taught me to how to use turtles extensively. I feel fairly confident on python and turtle module now
+
+Design:
+My project used a mix of both procedural and Object-Oriented design to create the puzzle. I used
+a Tile class to create tiles, Message class to create messages and Gameboard class to create the initial
+rectangles on screen.
+The implementation of the actual behavior of the game was mostly done procedurally like swapping, winning, losing,
+etc.
+
+Changes to UI:
+1) The only change in the UI is that I display player moves below the text "Player Moves". I thought it looked neater.
+2) I have some gap between tiles to show they are different tiles. Around 2 pixels I believe
+
+Description:
+My program has various helper files:
+- Tile: used to create turtles and give them images of each puzzle tile. They can move, they can swap their
+positions, and they can be hidden
+- Message: used to play messages to the screen like win, quit, file not found, etc. They are played
+for around 3 seconds
+- Leaderboard: helps to write the leaderboard contents on the game screen using turtle
+- Gameboard: creates the three rectangles for game area, leaderboard, and menu area with the
+three buttons
+- thumbnail: displays thumbnail images and hides them if needed
+- puz_info: reads a .puz file and stores all its contents in a list that we can use to create
+the game
+- puzzle_game: has various functions tuned to the instructions on how to play the game.
+The main function displays a splash screen and then lets us play
+
+In puzzle_game.py I have made use of several function and a handful of global variables. The turtle
+screen is global as all turtles and the images are registered on that same screen.
+Information like a player's name, their upper limit of moves, and their current number of valid moves is
+also global as it needs to be updated and checked for win and loss.
+Also one unusual thing I did hid the turtles when resetting thtem and send them to a very far positon. I just did not want them anywhere around the 
+game area as I was scared it would interfere with the behavior of the visible tiles.
+
+Looking at the play_puzzle function in puzzle_game.py file we can see the order of code. First we ask the player's name,
+then ask the their desired number of moves, then their choice of puzzle. We load that puzzle and then display it.
+The gameboard and leaderboard are also displayed. If the player makes a valid move the number at the bottom increases by 1.
+After each move we check if the player has won and if they have ran out of moves. If they reset the puzzle we show the solved puzzle and
+we also reset their number of moves. If they choose to load a new puzzle, their moves and the puzzle tiles are refreshed. If they quit, the game quits
